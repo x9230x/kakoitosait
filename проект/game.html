@@ -3,7 +3,7 @@
 <script>
 var ship = [[[1,5], [1,2,5], [1,2,3,5], [1,2,3,4,5]], [[6,10], [6,7,10], [6,7,8,10], [6,7,8,9,10]]];
 var dead = [[[201,203], [201,202,203], [201,202,202,203], [201,202,202,202,203]], [[204,206], [204,205,206], [204,205,205,206], [204,205,205,205,206]]];
-var shiptypes = [["Миноносец",2,4],["Фрегат",3,4],[ "Крейсер",4,2],[ "Линкор",5,1]];
+var shiptypes = [["Киратушы",2,4],["Фрегат",3,4],[ "Крейсер",4,2],[ "Шайкас",5,1]];
 var gridx = 16, gridy = 16; var player = [], computer = [], playersships = [], computersships = [];
 var playerlives = 0, computerlives = 0, playflag=true, statusmsg=""; var preloaded = [];
 function imagePreload() {
@@ -80,11 +80,11 @@ setImage(y,x,103,true);
 var shipno = computer[y][x][1];
 if ( --computersships[shipno][1] == 0 ) {
 sinkShip(computer,shipno,true);
-alert("Вы потопили мой "+shiptypes[computersships[shipno][0]][0]+"!");
+alert("Сиз менин "+shiptypes[computersships[shipno][0]][0]+ "батырдыныз" + "!");
 updateStatus();
 if ( --computerlives == 0 ) {
-alert("Вы выиграли! Нажмите кнопку \"Обновить\"\n"+
-"для начала новой игры.");
+alert("Сиз жендиниз! \"Обновить\"\n"+
+"конпканы басыныз жана ойын бастау ушин.");
 playflag = false;}}
 if ( playflag ) computerMove();}
 else if (computer[y][x][0] == 100) {
@@ -120,10 +120,10 @@ setImage(sy,sx,103,false);
 var shipno = player[sy][sx][1];
 if ( --playersships[shipno][1] == 0 ) {
 sinkShip(player,shipno,false);
-alert("Я потопил Ваш "+shiptypes[playersships[shipno][0]][0]+"!");
+alert("Мен сиздин  "+shiptypes[playersships[shipno][0]][0]+ "батырдым" + "!");
 if ( --playerlives == 0 ) {
 knowYourEnemy();
-alert("Вы проиграли! Нажмите кнопку \"Обновить\" для начала новой игры.");
+alert("Сиз женилдиниз! \"Обновить\" кнопканы басыныз жана ойын бастау ушин.");
 playflag = false;}}} else {
 setImage(sy,sx,102,false);}}
 function sinkShip(grid,shipno,ispc) {
@@ -147,7 +147,7 @@ for (i=0;i<computersships.length;++i) {
 if (computersships[i][1] > 0) {
 if (f) s=s+", "; else f=true;
 s = s + shiptypes[computersships[i][0]][0];}}
-if (!f) s = s + "больше ничего не осталось. Спасибо!";
+if (!f) s = s + "Ештене калмады. Рахмет!";
 statusmsg = s;
 window.status = statusmsg;
 }function setStatus() {
@@ -155,8 +155,8 @@ window.status = statusmsg;}
 imagePreload();
 player = setupPlayer(false);
 computer = setupPlayer(true);
-document.write("<center><table><tr><td align=center><b>Игровое поле компьютера</b></td>"+
-"<td align=center><b>Ваше игровое поле</b></td></tr><tr><td>");
+document.write("<center><table><tr><td align=center><b>Компьютедин ойын аланы</b></td>"+
+"<td align=center><b>Сиздин ойын аланыз</b></td></tr><tr><td>");
 showGrid(true);
 document.write("</td><td>");
 showGrid(false);
